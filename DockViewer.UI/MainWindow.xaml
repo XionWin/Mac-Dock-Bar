@@ -1,0 +1,83 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DockViewer.UI"
+    xmlns:dv="http://schemas.xion.com/dockViewer/"
+    x:Class="DockViewer.UI.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="480" Width="1360"  Background="#FF2c2a2e">
+    <Window.Resources>
+        <dv:MoveLeftCommand x:Key="leftCmd" />
+        <dv:MoveRightCommand x:Key="rightCmd" />
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource leftCmd}"
+                        CanExecute="CommandBinding_CanExecuted_MoveLeft"
+                        Executed="CommandBinding_Executed_MoveLeft"></CommandBinding>
+
+        <CommandBinding Command="{StaticResource rightCmd}"
+                        CanExecute="CommandBinding_CanExecuted_MoveRight"
+                        Executed="CommandBinding_Executed_MoveRight"></CommandBinding>
+    </Window.CommandBindings>
+
+    <Window.InputBindings>
+        <KeyBinding Key="Left" Command="{StaticResource leftCmd}"/>
+        <KeyBinding Key="Right" Command="{StaticResource rightCmd}"/>
+    </Window.InputBindings>
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="bg.png" Opacity=".018" Stretch="UniformToFill" />
+        </Grid.Background>
+
+        <dv:TestViewer x:Name="testViewer" Opacity=".25" />
+
+        <dv:ImageViewer x:Name="imageViewer" Space="-14" Height="192" VerticalAlignment="Bottom" FontFamily="Arphic Pensinkai GB" FontWeight="Bold" Padding="0, 0, 0, 3">
+            <dv:DockItem Title="煎鸡蛋">
+                <Image Source="Images/1.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            </dv:DockItem>
+            <dv:DockItem Title="烤面包">
+                <Image Source="Images/2.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            </dv:DockItem>
+            <dv:DockItem Title="喜瑞尔">
+                <Image Source="Images/3.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            </dv:DockItem>
+            <dv:DockItem Title="烧鸡">
+                <Image Source="Images/4.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            </dv:DockItem>
+            <dv:DockItem Title="牛排">
+                <Image Source="Images/5.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            </dv:DockItem>
+            <dv:DockItem Title="肉丸面">
+                <Image Source="Images/6.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            </dv:DockItem>
+            <dv:DockItem Title="煎猪心">
+                <Image Source="Images/7.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            </dv:DockItem>
+            <dv:DockItem Title="碧螺羹">
+                <Image Source="Images/8.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            </dv:DockItem>
+            <dv:DockItem Title="盖饭">
+                <Image Source="Images/9.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            </dv:DockItem>
+            <dv:DockItem Title="鸡蛋羹">
+                <Image Source="Images/10.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            </dv:DockItem>
+            <dv:DockItem Title="面包">
+                <Image Source="Images/11.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            </dv:DockItem>
+            <dv:DockItem Title="汤面">
+                <Image Source="Images/12.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            </dv:DockItem>
+            <dv:DockItem Title="炖牛腩">
+                <Image Source="Images/13.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            </dv:DockItem>
+        </dv:ImageViewer>
+
+        <Button Width="100" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Command="{StaticResource leftCmd}" CommandParameter="{Binding ElementName=imageViewer}" Content="&lt;&lt;" />
+        <Button Width="100" Height="24" VerticalAlignment="Top" HorizontalAlignment="Right" Command="{StaticResource rightCmd}" CommandParameter="{Binding ElementName=imageViewer}" Content="&gt;&gt;" />
+
+    </Grid>
+</Window>
